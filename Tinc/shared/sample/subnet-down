@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Help Debugging
+#exec 3>&1 1>>/tmp/subnet-down.$$.exec_log 2>&1
+#/usr/bin/env
+
+# Skip for ourself
+[ "$NODE" = "HostName" ] && exit
+
+/bin/ip route delete $SUBNET dev $INTERFACE
+

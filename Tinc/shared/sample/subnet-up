@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Help Debugging
+#exec 3>&1 1>>/tmp/subnet-up.$$.exec_log 2>&1
+#/usr/bin/env
+
+# Don't add a route for ourself
+[ "$NODE" = "HostName" ] && exit
+
+/bin/ip route add $SUBNET dev $INTERFACE
+

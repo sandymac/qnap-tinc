@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Help Debugging
+#exec 3>&1 1>>/tmp/tinc-up.$$.exec_log 2>&1
+#/usr/bin/env
+
+#/sbin/ifconfig $INTERFACE IPv4Address
+
+/bin/ip link set $INTERFACE up
+/bin/ip addr add IPv4Address/32 dev $INTERFACE
+
