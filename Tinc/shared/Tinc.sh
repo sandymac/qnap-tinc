@@ -35,6 +35,13 @@ case "$1" in
 	netName=`basename $configDir`
 	# Start tincd -n $netName -c $configDir --pidfile="$configDir/tinc.pid" --logfile="$configDir/tinc.log"
 	$TINCD -n $netName -c $configDir --pidfile="$configDir/tinc.pid" --logfile="$configDir/tinc.log"
+
+	# a little error checking
+	/bin/sleep 1
+	/bin/ip link show $netName
+	if [ $? -ne 0 ]; then
+	  $LOG_TOOL -t1 -uTinc -a 'VPN interface $netName not ready after 1 second.'
+	fi
     done
 
     ;;
@@ -52,6 +59,7 @@ case "$1" in
 
   restart)
     $0 stop
+    /bin/sleep 5
     $0 start
     ;;
 
