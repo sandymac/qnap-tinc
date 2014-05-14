@@ -14,7 +14,7 @@ LOG_TOOL=/sbin/log_tool
 # ip link show eth0 | grep link/ether | awk '{print $2}'
 # python -c 'print(int("FF", 16))'
 
-# TODO: sed s/HostName/$HOSTNAME/g in tinc.conf, subnet-{up,down}, and hosts/HostName
+# TODO: sed s/HostName/$HOSTNAME/g in tinc.conf.sample, subnet-{up,down}, and hosts/HostName
 
 # TODO: sed s/IPv4Address/172.16.#.#/g tinc-up and hosts/HostName
 
