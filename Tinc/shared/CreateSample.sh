@@ -5,18 +5,17 @@ QPKG_PATH=$(/sbin/getcfg $QPKG_NAME Install_Path -f $CONF)
 TINCD="$QPKG_PATH/tincd"
 LOG_TOOL=/sbin/log_tool
 
-# TODO: Check /share/Tinc/sample doesn't exist
+# Check /share/Tinc/sample doesn't exist
 if [ -d /share/Tinc/sample ]
 then
   # sample dir already exists
   exit 
 fi
-#mkdir /share/Tinc/sample
 
-# TODO: cp -a $QPKG_PATH/sample to /share/Tinc/sample
+# cp -a $QPKG_PATH/sample to /share/Tinc/sample
 cp -a $QPKG_PATH/sample /share/Tinc/sample
 
-# TODO: Generate an IP Address likely to be unique.
+# Generate an IP Address likely to be unique.
 # eg: 172.16.#.#/32 where #.# is based on Mac address
 # ip link show eth0 | grep link/ether | awk '{print $2}'
 # python -c 'print(int("FF", 16))'
@@ -27,20 +26,20 @@ mac6=`echo $mac | cut -d : -f 6`
 quadC=`python -c "print(int(\"$mac5\", 16))"`
 quadD=`python -c "print(int(\"$mac6\", 16))"`
 
-# TODO: sed s/HostName/$HOSTNAME/g in tinc.conf.sample, subnet-{up,down}, and hosts/HostName
+# sed s/HostName/$HOSTNAME/g in tinc.conf.sample, subnet-{up,down}, and hosts/HostName
 sed -i "s/HostName/$HOSTNAME/g" /share/Tinc/sample/tinc.conf.sample
 sed -i "s/HostName/$HOSTNAME/g" /share/Tinc/sample/subnet-up
 sed -i "s/HostName/$HOSTNAME/g" /share/Tinc/sample/subnet-down
 sed -i "s/HostName/$HOSTNAME/g" /share/Tinc/sample/hosts/HostName
 
-# TODO: sed s/IPv4Address/172.16.#.#/g tinc-up and hosts/HostName
+# sed s/IPv4Address/172.16.#.#/g tinc-up and hosts/HostName
 sed -i "s/IPv4Address/172.16.${quadC}.${quadD}/g" /share/Tinc/sample/tinc-up
 sed -i "s/IPv4Address/172.16.${quadC}.${quadD}/g" /share/Tinc/sample/hosts/HostName
 
-# TODO: rename hosts/HostName to $HOSTNAME
+# rename hosts/HostName to $HOSTNAME
 mv /share/Tinc/sample/hosts/HostName "/share/Tinc/sample/hosts/${HOSTNAME}"
 
-# TODO: generate keys: tind --generate-keys
+# generate keys: tind --generate-keys
 # make sure it doesn't block on input
 
 # Enable this config briefly
