@@ -28,7 +28,7 @@ quadC=`python -c "print(int(\"$mac5\", 16))"`
 quadD=`python -c "print(int(\"$mac6\", 16))"`
 
 # TODO: sed s/HostName/$HOSTNAME/g in tinc.conf.sample, subnet-{up,down}, and hosts/HostName
-sed -i "s/HostName/$HOSTNAME/g" /share/Tinc/sample/tinc.conf
+sed -i "s/HostName/$HOSTNAME/g" /share/Tinc/sample/tinc.conf.sample
 sed -i "s/HostName/$HOSTNAME/g" /share/Tinc/sample/subnet-up
 sed -i "s/HostName/$HOSTNAME/g" /share/Tinc/sample/subnet-down
 sed -i "s/HostName/$HOSTNAME/g" /share/Tinc/sample/hosts/HostName
