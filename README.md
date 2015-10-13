@@ -22,7 +22,7 @@ How to use this
 This simply provides a QDK enviroment for Tinc on Qnap devices. 
 It does not provde a installable binary package. You will need to:
 
-1. Compile Tinc for your device. On an x86 Qnap http://james.vautin.com/?p=285 can be helpful but he's wrong about gawk, the problem is with sed, see above.
+1. Compile Tinc for your device. On an x86 Qnap http://james.vautin.com/?p=285 can be helpful but he's wrong about gawk, the problem is with sed, see above.  (James Vautin's site has been redone, see http://forum.qnap.net.pl/download/tinc-qpkg-building-guide.157/ for alternative Tinc compile info. I haven't tested it myself.)
 2. ssh into your Qnap and check this repo out with git.
 3. copy your compiled tincd binary into the x86 dir. (other platform specific dirs might work for those platforms.)
 4. Run qbuild to produce a .qpkg you can install.
